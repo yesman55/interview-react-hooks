@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 
 const Example = () => {
   const userDataExample = {
     view: {
-      detail: true,
+      detail: 'Original detail',
     }
   }
   const [userData, setUserData] = useState(userDataExample);
@@ -13,18 +13,19 @@ const Example = () => {
     updateUser();
   });
 
-  const updateUser = (userDataExample) => {
-    setUserData(userDataExample);
+  const updateUser = (userData) => {
+    setUserData(userData);
   };
 
   const handleOnClick = () => {
-    userDataExample.view.detail = !userDataExample.view.detail;
+    userData.view.detail = 'New detail';
+    setUserData(userData);
   }
 
   return (
     <>
       <div className="Button-container">
-        <Button variant="primary" onClick={handleOnClick}>{userDataExample.view.detail}</Button>
+        <Button variant="primary" onClick={handleOnClick}>{userData.view.detail}</Button>
       </div>
     </>
   );
